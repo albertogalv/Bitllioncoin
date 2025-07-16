@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitllionCoin</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-gold font-sans">
+  <section class="text-center py-20 px-4">
+    <img src="bitllioncoin_logo.png" alt="BitllionCoin Logo" class="mx-auto mb-6 w-32 h-32" />
+    <h1 class="text-5xl font-bold text-yellow-400">BitllionCoin</h1>
+    <p class="text-lg text-yellow-200 mt-2">The Digital Coin of Billionaires</p>
+  </section>
+
+  <section class="bg-gray-900 text-yellow-300 py-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-4">What is BitllionCoin?</h2>
+      <p class="mb-6">BitllionCoin (BLLN) is an exclusive Ethereum-based token designed with a fixed supply of only 10,000 units. With no minting, burning, or pausing functions, its scarcity and security are guaranteed from launch.</p>
+
+      <h2 class="text-3xl font-semibold mb-4">Tokenomics</h2>
+      <ul class="list-disc list-inside">
+        <li>Symbol: BLLN</li>
+        <li>Total Supply: 10,000</li>
+        <li>Decimals: 18</li>
+        <li>Non-mintable, non-burnable, non-pausable</li>
+        <li>Network: Ethereum</li>
+        <li>Contract: <code class="bg-gray-700 px-2 py-1 rounded">0x71638f6cF244199Bd91ee1686313D60Bc5f57e44</code></li>
+      </ul>
+
+      <a href="https://app.uniswap.org/#/swap?outputCurrency=0x71638f6cF244199Bd91ee1686313D60Bc5f57e44" target="_blank">
+        <button class="mt-6 bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500">Trade on Uniswap</button>
+      </a>
+
+      <br />
+      <button onclick="addToken()" class="mt-4 underline text-yellow-200">Add BLLN to MetaMask</button>
+    </div>
+  </section>
+
+  <footer class="text-center text-yellow-500 py-8">
+    <p>&copy; 2025 BitllionCoin. All rights reserved.</p>
+  </footer>
+
+  <script>
+    async function addToken() {
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0x71638f6cF244199Bd91ee1686313D60Bc5f57e44',
+              symbol: 'BLLN',
+              decimals: 18,
+              image: 'bitllioncoin_logo.png',
+            },
+          },
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
